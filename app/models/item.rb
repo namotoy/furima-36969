@@ -8,9 +8,9 @@ class Item < ApplicationRecord
   belongs_to :shipping_days
   belongs_to :user
 
-  validates :title, :explanation, :price, presence: true 
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
-  # validates :price, inclusion: {:in 300..9999999)
-
+  validates :image, :title, :explanation, :price, presence: true 
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: 'out of setting range' }
   validates :category_id, :situation_id, :delively_charge_id, :prefecture_id, :shipping_days_id, numericality: {other_than: 0 , message: "can't be blank"}
+
 end
