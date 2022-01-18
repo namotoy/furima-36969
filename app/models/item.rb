@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_days
   belongs_to :user
+  has_one :buyer
 
   validates :image, :title, :explanation, :price, presence: true
   validates :price, numericality: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters' }
