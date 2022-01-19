@@ -5,7 +5,7 @@ class BuyersController < ApplicationController
   end
 
   def create
-  
+    
   end
 
 
