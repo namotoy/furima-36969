@@ -3,7 +3,7 @@ class BuyerAddress
   attr_accessor :post_code, :prefecture_id, :city, :block_number, :building_name,:telephone_number,:user_id,:item_id,:number, :exp_month, :exp_year, :cvc
 with_options presence: true do
   validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-  validates :prefecture_id, :city, :block_number
+  validates :prefecture_id, :city, :block_number, :user_id, :item_id
   validates :telephone_number, numericality: {with: /\A{10,11}\z/, message: "is invalid.Input half-width characters"}
 end
 validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
