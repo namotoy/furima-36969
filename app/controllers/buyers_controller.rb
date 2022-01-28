@@ -38,13 +38,4 @@ class BuyersController < ApplicationController
     currency: 'jpy' 
   )
   end
-
-  # def move_to_index
-  #   unless @item.user_id == current_user.id
-  #     redirect_to root_path
-  #   end
-  #   if @item.user_id == current_user.id && @item.buyer.present? 
-  #     redirect_to root_path
-  #   end
-  # end
 end
