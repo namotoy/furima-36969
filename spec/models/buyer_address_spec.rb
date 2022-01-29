@@ -52,7 +52,19 @@ RSpec.describe BuyerAddress, type: :model do
         expect(@buyer_address.errors.full_messages).to include("Telephone number can't be blank")
       end
       
-      it '電話番号が10桁以上11桁以内の半角数値のみでないと保存できないこと' do
+      it '電話番号が9桁以下だと登録できないこと' do
+        @buyer_address.telephone_number = '12345'
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("Telephone number is invalid")
+      end
+      
+      it '電話番号が12桁以上だと登録できないこと' do
+        @buyer_address.telephone_number = '123456789012345'
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("Telephone number is invalid")
+      end
+      
+      it '電話番号に半角数字以外が含まれている場合は登録できないこと' do
         @buyer_address.telephone_number = '１１１１１１１１１１'
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Telephone number is invalid.Input half-width characters")
