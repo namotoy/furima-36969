@@ -3,7 +3,7 @@ const pay = () => {
   const submit = document.getElementById("button");
   submit.addEventListener("click", (e) => {
     e.preventDefault();
-
+    
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
     const card = {
@@ -12,7 +12,7 @@ const pay = () => {
       exp_month: formData.get("buyer_address[exp_month]"),
       exp_year: `20${formData.get("buyer_address[exp_year]")}`,
     };
-
+    
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
         const token = response.id;
